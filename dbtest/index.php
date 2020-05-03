@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Database Version</title>
+    <title>Expirely (PHP)</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/Create-Form.css">
@@ -62,11 +62,10 @@
                   </thead>
                   <tbody>
 
-<?php
-phpinfo();
-  
+                <?php
+
                     //Change the password to match your configuration
-                    $link = mysqli_connect("localhost", "xpuser", "a5mp8m5RTx4!47zs", "expirely");
+                    $link = mysqli_connect("localhost", "xpuser", "zz8Z1lc0CkYP#s39", "expirely");
 
                     // Check connection
                     if($link === false){
@@ -77,30 +76,28 @@ phpinfo();
                     $sql = "SELECT * FROM test";
                     $result = $link->query($sql);
 
-                    echo "<tr>";
-                      echo "<td align='center'>";
-                        echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>";
-                        echo "</td>";
-                        echo "<td>Rice</td>";
-                        echo "<td>10 Pounds</td>";
-                        echo "<td>10-27-2030</td>";
-                        echo "<td>California Short Grain</td>";
-                        echo "<td align='center'><img src='https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png' height='70' width='70'></td>";
-                        echo "</tr>";
-?>
 
-<!--                          <tr>
-                            <td align="center">
-                              <a class="btn btn-danger" onclick="deleteRow()"><em class="fa fa-trash" id="trash"></em></a>
-                            </td>
-                            <td>Rice</td>
-                            <td>10 Pounds</td>
-                            <td>10-27-2030</td>
-                            <td>California Short Grain</td>
-                              <td align="center"><img src="https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png" height="70" width="70"></td>
-                          </tr>
-                        -->
+                    
+				    if ($result->num_rows > 0) {
+	                    // output data of each row
+                        while($row = $result->fetch_assoc()) {                        
+                            echo "<tr>";
+                                echo "<td align='center'>";
+                                    echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>";
+                                echo "</td>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td>" . $row["amount"] . "</td>";
+                                echo "<td>" . $row["expiration"] . "</td>";
+                                echo "<td>" . $row["description"] . "</td>";
+                                echo "<td align='center'><img src='" . $row["image"] . "' height='70' width='70'></td>";
+                            echo "</tr>";
+                        }
+                    }
+                    else {
+                        echo "Sorry, nothing in your pantry! (0 results)";
+                    }
 
+                ?>
                         </tbody>
                 </table>
             
