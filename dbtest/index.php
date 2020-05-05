@@ -135,7 +135,7 @@
     <input id="foodAmount" type="text" placeholder="Enter Amount" name="amount" required>
       
      <label for="expiration"><b>Expiration</b></label>
-    <input id="foodExpiration" type="text" placeholder="Enter Expiration" name="expiration" required>
+    <input id="foodExpiration" type="text" placeholder="Todays date plus 3 days if Left over food" name="expiration" required>
       
      <label for="description"><b>Description</b></label>
     <input id="foodDescription" type="text" placeholder="Enter Description" name="description" required>
@@ -145,7 +145,8 @@
        <img id="blah" src="#" alt="your image" />
       <br><br>
 
-      <input type="button" class="btn" onclick="addValues()" value="Add">
+      <input type="button" class="btn" onclick="addValues()" value="Add Item">
+      <input type="button" class="btn" onclick="addValues()" value="Add Left overs">
     <input type="button" class="btn cancel" onclick="closeForm()" value="Close">
   </form>
 </div><div>
