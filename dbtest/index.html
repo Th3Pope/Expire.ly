@@ -125,6 +125,31 @@ phpinfo();
                 </div>
               </div>
             </div>
+</div></div></div><div class="form-popup" id="myForm">
+  <form class="form-container">
+    <h1>Add Food Item</h1>
+
+    <label for="name"><b>Name</b></label>
+    <input id="foodName"  type="text" placeholder="Enter Name" name="name" required>
+
+    <label for="amount"><b>Amount</b></label>
+    <input id="foodAmount" type="text" placeholder="Enter Amount" name="amount" required>
+      
+     <label for="expiration"><b>Expiration</b></label>
+    <input id="foodExpiration" type="text" placeholder="Enter Expiration" name="expiration" required>
+      
+     <label for="description"><b>Description</b></label>
+    <input id="foodDescription" type="text" placeholder="Enter Description" name="description" required>
+      
+      <label for="image"><b>Image</b></label>
+     <input type="file" id="foodImage" accept="image/*"  onchange="readURL(this)" name="image">
+       <img id="blah" src="#" alt="your image" />
+      <br><br>
+
+      <input type="button" class="btn" onclick="addValues()" value="Add">
+    <input type="button" class="btn cancel" onclick="closeForm()" value="Close">
+  </form>
+</div><div>
 <script async src="https://cse.google.com/cse.js?cx=0000096038462138319625:3fpaisqpfsk"></script>
 <div class="gcse-search"></div>
 </div></div></div><div class="form-popup" id="myForm">
