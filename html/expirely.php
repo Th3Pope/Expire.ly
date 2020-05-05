@@ -6,7 +6,7 @@
 <body>
 
 <?php
-    $hostname = "localhost";//35.247.109.182:3306";
+    $hostname = "localhost";
     $username = "nnewhard";
     $password = "wS9cMCF6*R!";
     $db = "expirely";
