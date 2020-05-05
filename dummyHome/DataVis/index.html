@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
+  <style>
+  </style>
+  <title>My Chart.js Chart</title>
+</head>
+<body>
+  <div class="container">
+    <canvas id="myChart" width="400" height="300"></canvas>
+  </div>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    /*
+    * type indicates the type of chart we will be using
+    * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+    */
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels: ["Good", "Use", "Bad"],
+        datasets: [{
+            label: "Food",
+            backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+            borderColor: 'rgb(0, 0, 0)',
+            data: [13, 7, 5],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+      title: {
+        display: true,
+        text: 'Food Analytics',
+        fontSize: 28,
+        fontColor: "#AB0032" //CWU Color
+      }
+    }
+});
+  </script>
+</body>
+</html>
