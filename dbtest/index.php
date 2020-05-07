@@ -145,9 +145,9 @@
        <img id="blah" src="#" alt="your image" />
       <br><br>
 
-      <input type="button" class="btn" onclick="addValues()" value="Add Item">
-      <input type="button" class="btn" onclick="addValues()" value="Add Left overs">
-    <input type="button" class="btn cancel" onclick="closeForm()" value="Close">
+      <input id="addFood" type="button" class="btn" onclick="addValues()" value="Add Item">
+      <input id="addLeftOver" type="button" class="btn" onclick="addValues()" value="Add Left overs">
+    <input id="closePage"type="button" class="btn cancel" onclick="closeForm()" value="Close">
   </form>
 </div><div>
     <script async src="https://cse.google.com/cse.js?cx=000096038462138319625:3fpaisqpfsk"></script>

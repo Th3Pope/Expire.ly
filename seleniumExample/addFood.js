@@ -19,7 +19,7 @@ async function example(){
     //click add button and close button
     driver.findElement(By.id("addNew")).click();
     //close not working in index.php file but should work once completely running
-    //driver.findElement(By.id("closeForm")).click();
+    //driver.findElement(By.id("closePage")).click();
     
 
     //to delete line line in this case the top
