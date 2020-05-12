@@ -23,7 +23,7 @@ async function example(){
     
 
     //to delete line line in this case the top
-    driver.findElement(By.id("trash")).click();
+    //driver.findElement(By.id("trash")).click();
     
 
     
