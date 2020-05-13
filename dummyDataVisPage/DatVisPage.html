@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <title>Analytics</title>
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="logo">Expire.ly</div>
+    <div class="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">My Pantry</a></li>
+        <li><a href="#">Donate Food</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="banner-text">
+      <div class="banner-text-items">
+        <h2>Food Visualizer</h2>
+        <p>Here we give you a visual break down of all of the food items in your
+        current stock pile</p>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="main1">
+      <h2>Food Break Down</h2>
+      <p>Food items are currently broken down into three sub categories,</p>
+      <ul>
+        <li>Good (Years to one week out)</li>
+        <li>Use (One week to 1 day out)</li>
+        <li>Bad (The items have spoiled)</li>
+      </ul>
+    </div>
+    <div class="main1">
+      <canvas id="myChart1" width="50" height="50"></canvas>
+    </div>
+    <div class="main1">
+      <canvas id="myChart2" width="50" height="50"></canvas>
+    </div>
+  </div>
+
+  <script>
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var chart = new Chart(ctx, {
+    /*
+    * type indicates the type of chart we will be using
+    * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+    */
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels: ["Good", "Use", "Bad"],
+        datasets: [{
+            label: "Food",
+            backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+            borderColor: 'rgb(0, 0, 0)',
+            data: [13, 7, 5],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+      title: {
+        display: true,
+        text: 'Doughnut',
+        fontSize: 28,
+        fontColor: "#AB0032" //CWU Color
+      }
+    }
+});
+/*
+* Separating JavaScript for different charts
+*/
+var ctx = document.getElementById('myChart2').getContext('2d');
+var chart = new Chart(ctx, {
+/*
+* type indicates the type of chart we will be using
+* line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+*/
+type: 'bar',
+
+// The data for our dataset
+data: {
+    labels: ["Good", "Use", "Bad"],
+    datasets: [{
+        label: "Food",
+        backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+        borderColor: 'rgb(0, 0, 0)',
+        data: [13, 7, 5],
+    }]
+},
+
+// Configuration options go here
+options: {
+  title: {
+    display: true,
+    text: 'Bar Chart',
+    fontSize: 28,
+    fontColor: "#AB0032" //CWU Color
+  }
+}
+});
+  </script>
+</body>
+</html>
