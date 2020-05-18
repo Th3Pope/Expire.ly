@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -22,7 +23,7 @@
   <div class="banner">
     <div class="banner-text">
       <div class="banner-text-items">
-        <h2>Banner Text Heading</h2>
+        <h2>We Are Expirely</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -33,14 +34,8 @@
     </div>
   </div>
   <div class="main-content">
-    <div class="main1">
-      <h2>Main Heading One</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.</p>
+    <div class="container">
+      <canvas id="myChart" width="400" height="300"></canvas>
     </div>
     <div class="main1">
       <h2>Main Heading Two</h2>
@@ -73,5 +68,36 @@
       </div>
     </div>
   </div>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    /*
+    * type indicates the type of chart we will be using
+    * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+    */
+    type: 'doughnut',
+
+    // The data for our dataset
+    data: {
+        labels: ["Good", "Use", "Bad"],
+        datasets: [{
+            label: "Food",
+            backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+            borderColor: 'rgb(0, 0, 0)',
+            data: [13, 7, 5],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+      title: {
+        display: true,
+        text: 'Food Analytics',
+        fontSize: 28,
+        fontColor: "#AB0032" //CWU Color
+      }
+    }
+});
+  </script>
 </body>
 </html>
