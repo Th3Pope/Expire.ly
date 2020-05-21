@@ -1,0 +1,129 @@
+<?php
+// Initialize the session
+session_start();
+
+// Include config file
+require_once "config.php";
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Analytics.css">
+    <link rel="stylesheet" href="assets/css/breadcrumb.css">
+    <link rel="stylesheet" href="assets/css/ComingSoon.css">
+    <link rel="stylesheet" href="assets/css/Create-Form.css">
+    <link rel="stylesheet" href="assets/css/Dynamic-Table.css">
+    <link rel="stylesheet" href="assets/css/filter.css">
+    <link rel="stylesheet" href="assets/css/Home.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/Map.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Header.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form-1.css">
+    <link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+</head>
+
+<body><nav class="navbar navbar-light navbar-expand-md custom-header">
+    <div class="container-fluid">
+        <div><a class="navbar-brand" href="home.php" style="font-size: 40px;">Expire.ly</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+        <div
+            class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav links"></ul>
+            <div style="text-align: center;">
+                <div class="row">
+                   
+                </div>
+            </div>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><img class="dropdown-image" src="assets/img/avatar.jpg" />&nbsp;&nbsp;<?php echo htmlspecialchars($_SESSION["username"]); ?></a>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a class="dropdown-item" role="presentation" href="home.php">Home</a>
+                        <a class="dropdown-item" role="presentation" href="index.php">My Pantry </a>
+                        <a class="dropdown-item" role="presentation" href="donation.php">Donate Food</a>
+                        <a class="dropdown-item" role="presentation" href="analytics.php">Analytics </a>
+                        <a class="dropdown-item" role="presentation" href="account-settings.php">Account Settings</a>
+                        <a class="dropdown-item" role="presentation" href="logout.php">Logout </a></div>
+                </li>
+            </ul>
+    </div>
+    </div>
+</nav><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+<!-- <div class="top-bar">
+    <div class="logo">Expire.ly</div>
+    <div class="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Calendar</a></li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="banner">
+    <div class="banner-text">
+      <div class="banner-text-items">
+        <h2>We Are Expire.ly</h2>
+          <p>Your Pantry Solution</p>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="main1">
+      <h2>Here's a quick breakdown of your pantry</h2>
+        <!--canvas id="DoughnutChart" height="400" width="400">
+ <script src="JavaScript/myChart.js"></script>
+            
+        </canvas-->
+       <canvas id="myChart1" width="300" height="300" style="display: block; width: 300px; height: 300px;"></canvas> 
+        
+        
+    </div>
+    <div class="main1">
+      <h2>Here is your to do list</h2>
+      <p>This is a list.
+        This is a list.</p>
+    </div>
+    <div class="main1">
+      <h2>What we are about</h2>
+      <p>Here at Expire.ly we are in the business of making sure you pantry is in order. Whether it be a stockpile being collected for a rainy day or you wanna make sure that steak in the freezer doesn't go to waste, we got you covered!</p>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="contact">
+      <div class="contact-items">
+        <h2>Contact Us</h2>
+          <p>We wanna hear from you!</p>
+        <input type="text" name="" placeholder="Your Name...">
+        <input type="text" name="" placeholder="Your Email...">
+        <textarea rows="20" cols="20" placeholder="Your Message Here..."></textarea>
+        <a href="#">Submit</a>
+      </div>
+    </div>
+  </div>
+<!--script src="JavaScript/myChart.js"></script-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Create-Form.js"></script>
+    <script src="assets/js/myChart.js"></script>
+    <script src="assets/js/Profile-Edit-Form.js"></script>
+</body>
+
+</html>
