@@ -221,7 +221,10 @@ function removeItem(e) {
                         {
                             echo "<tr>";
                                 echo "<td align='center'>";
-                                    echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>";
+                                	echo "<a class='btn btn-danger'  
+                                        href='delete.php?id=" . $row["id_food"] . "'>
+                                        <em class='fa fa-trash'></em></a>";
+                                   // echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>"; 
                                 echo "</td>";
                                 echo "<td>" . $row["name"] . "</td>";
                                 echo "<td>" . $row["amount"] . "</td>";
