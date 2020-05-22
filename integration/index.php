@@ -215,7 +215,13 @@ function removeItem(e) {
 
                       //$sql = "SELECT * from food WHERE food.user_id = " . $id;
 
-                      $sql = "SELECT * FROM food, images WHERE food.user_id = " . $id . " AND images.image_id = food.image_id";
+                      //$sql = "SELECT * FROM food, images WHERE food.user_id = " . $id . " AND images.image_id = food.image_id";
+
+                      //$sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id AS 'food_image_id', images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id";
+
+                      $sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id, images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id";
+
+                      //echo "1.7 $sql <BR>";
 
                       $result = $link->query($sql);
                       if ($result->num_rows > 0) 
@@ -223,7 +229,7 @@ function removeItem(e) {
                         while($row = $result->fetch_assoc()) 
                         {
                             echo "<tr>";
-                              //echo "1.0 THIS IS = " . $row["id"];
+                              //echo "1.7 THIS IS = " . $row["id"];
 
                                 echo "<td align='center'>";
                                   echo "<a class='btn btn-danger'  
@@ -237,7 +243,7 @@ function removeItem(e) {
                                 echo "<td>" . $row["description"] . "</td>";
 
                                 //echo "<td align='center'><img src='https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png' height='70' width='70'></td>";
-                                echo "<td align='center'><img src='" . $row["images.url"] . "' height='70' width='70'></td>";
+                                echo "<td align='center'><img src='" . $row["url"] . "' height='70' width='70'></td>";
 
                                 echo "<td align='center' style='font-size: 30px;'><i class='fas fa-circle' style='color: green;'></i></td>";
                             echo "</tr>";
