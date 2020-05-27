@@ -10,7 +10,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
-include ($_SERVER["DOCUMENT_ROOT"] . "/insert.php");
+include_once ($_SERVER["DOCUMENT_ROOT"] . "/insert.php");
 ?>
 
 <!DOCTYPE html>
