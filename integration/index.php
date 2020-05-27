@@ -238,8 +238,8 @@ function removeItem(e) {
                                    // echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>"; 
                                 echo "</td>";
                                 echo "<td>" . $row["name"] . "</td>";
-                                echo "<td>" . $row["amount"] . "</td>";
                                 echo "<td>" . $row["expires"] . "</td>";
+                                echo "<td>" . $row["amount"] . "</td>";
                                 echo "<td>" . $row["description"] . "</td>";
 
                                 //echo "<td align='center'><img src='https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png' height='70' width='70'></td>";
