@@ -192,22 +192,22 @@
                               <?php
                                  $id = $_SESSION["id"];
                                  
-                                 //$sql = "SELECT * from food WHERE food.user_id = " . $id;
-                                 
-                                 //$sql = "SELECT * FROM food, images WHERE food.user_id = " . $id . " AND images.image_id = food.image_id";
-                                 
-                                 //$sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id AS 'food_image_id', images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id";
-                                 
                                  $sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id, images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id ORDER BY STR_TO_DATE(food.expires, \"%Y-%m-%d\") ASC";
                                  
-                                 
-                                 //echo "1.7 $sql <BR>";
-                                 
-                                 $result = $link->query($sql);
-                                 if ($result->num_rows > 0) 
-                                 {
-                                   while($row = $result->fetch_assoc()) 
-                                   {
+                                $result = $link->query($sql);
+                                if ($result->num_rows > 0) 
+                                {
+                  while($row = $result->fetch_assoc()) 
+                                    {
+                    $now = new DateTime('NOW', new DateTimeZone('America/Los_Angeles')); // should use user time zone
+                    $expires = new DateTime($row["expires"], new DateTimeZone('America/Los_Angeles'));
+                    $idays = 0;
+                    if ($expires < $now) {
+                      $idays = -(int)date_diff($now, $expires)->format("%d");
+                    } else {
+                      $idays = (int)date_diff($now, $expires)->format("%d");
+                    }
+
                                        echo "<tr>";
                                          //echo "1.7 THIS IS = " . $row["id"];
                                  
@@ -218,14 +218,22 @@
                                               // echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>"; 
                                            echo "</td>";
                                            echo "<td>" . $row["name"] . "</td>";
-                                           echo "<td>" . $row["expires"] . "</td>";
+                                           echo "<td>" . $row["expires"] ."</td>";
                                            echo "<td>" . $row["amount"] . "</td>";
                                            echo "<td>" . $row["description"] . "</td>";
                                  
                                            //echo "<td align='center'><img src='https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png' height='70' width='70'></td>";
                                            echo "<td align='center'><img src='" . $row["url"] . "' height='70' width='70'></td>";
-                                 
-                                           echo "<td align='center' style='font-size: 30px;'><i class='fas fa-circle' style='color: green;'></i></td>";
+
+                    if ($idays < 3) {
+                                          $color = 'red';
+                                        } elseif ($idays >= 3 && $idays <= 14) {
+                                          $color = 'orange';
+                                        } else {
+                                          $color = 'green';
+                                        }
+
+                                           echo "<td align='center' style='font-size: 30px;'><i class='fas fa-circle' style='color: " . $color . ";'></i></td>";
                                        echo "</tr>";
                                    }
                                  }
