@@ -219,7 +219,7 @@ function removeItem(e) {
 
                       //$sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id AS 'food_image_id', images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id";
 
-                      $sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id, images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id";
+                      $sql = "SELECT food.id, food.name, food.amount, food.expires, food.description, food.user_id, food.image_id, images.id AS 'image_id', images.url FROM food, images WHERE food.user_id = " . $id . " AND images.id = food.image_id ORDER BY STR_TO_DATE(food.expires, \"%Y-%m-%d\") ASC";
 
                       //echo "1.7 $sql <BR>";
 
@@ -263,7 +263,7 @@ function removeItem(e) {
             </div>
         </div>
     </div><div class="form-popup" id="myForm" style = "float: bottom;">
-  <form class="form-container" action="/expirely/insert.php"> <!--method="post">-->
+  <form class="form-container" action="./insert.php"> <!--method="post">-->
     <h1 style="text-align: center;">Add Your Food</h1>
 
     <label for="name"><b>Food Name</b></label>
