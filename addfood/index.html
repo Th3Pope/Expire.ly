@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="text-left">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>AddFood</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-Tags-Input.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Toggle-Switches.css">
+</head>
+
+<body>
+    <div class="register-photo">
+        <div class="form-container" style="width: 512px;">
+            <form method="post"><button class="close pull-right" id="btnClose" style="margin-top: -30px;margin-right: -50px;width: 24px;height: 24px;"><span aria-hidden="true">×</span></button>
+                <h2 class="text-center" style="margin-bottom: 12px;margin-top: -20px;"><strong>Add a Food</strong></h2>
+                <fieldset style="height: 28px;margin-bottom: 20px;width: 200px;">
+                    <div class="toggle" style="width: 160px;margin-bottom: 0px;margin-left: 120px;"><input type="radio" id="cond_new" name="bike_cond" checked="checked"><label id="btnFresh" for="cond_new" style="font-size: 11px;padding: 5px ;height: 28px;width: 80px;">Fresh</label><input type="radio" id="cond_used" name="bike_cond">
+                        <label
+                            id="btnLeftover" for="cond_used" style="font-size: 11px;padding: 5px;height: 28px;width: 80px;">Leftover</label>
+                    </div>
+                </fieldset><input class="form-control form-control-sm" type="text" id="inputFilters" data-role="tagsinput" data-class="label-info" placeholder="Tags" style="height: 20px;background-color: rgb(254,254,255);font-size: 10px;">
+                <div class="form-group"><input class="form-control" type="text" id="inputFoodName" placeholder="Enter the food name" name="foodName" minlength="4" maxlength="80" required="" style="margin-top: 10px;"></div>
+                <div class="form-group"><input class="form-control" type="text" id="inputFoodAmt" name="foodAmount" placeholder="Enter an amount" minlength="1" required="" maxlength="80"></div>
+                <div class="form-group"><input class="form-control" type="text" id="inputFoodDesc" name="foodDescription" placeholder="Enter a description"></div>
+                <div class="form-group"><input class="form-control form-control-sm" id="dateExpires" type="date" style="width: 392px;" name="expireDate"><small class="form-text text-center text-muted" style="margin-bottom: 20px;font-size: 11px;font-style: normal;width: 392px;margin-top: 0px;">Enter food expiration date.</small></div>
+                <div
+                    class="form-group text-center"><button class="btn btn-success" id="btnAdd" type="submit" style="width: 96px;margin-left: 0;">Add</button></div>
+        </form>
+    </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Bootstrap-Tags-Input-1.js"></script>
+    <script src="assets/js/Bootstrap-Tags-Input.js"></script>
+</body>
+
+</html>

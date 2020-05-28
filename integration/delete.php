@@ -12,7 +12,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 // Get the food id to identy which entry to delete
-$id = $_GET['id'];
+$food_id = $_GET['food_id'];
+
+ echo "$food_id = " . $_GET['food_id'];
+
 
 // Check connection
 if (!$link) {
@@ -20,7 +23,7 @@ if (!$link) {
 }
 
 // SQL to delete food entry based on its unique id
-$sql = "DELETE FROM food WHERE id_food = $id"; 
+$sql = "DELETE FROM food WHERE id = $food_id"; 
 
 if (mysqli_query($link, $sql)) {
     mysqli_close($link);
