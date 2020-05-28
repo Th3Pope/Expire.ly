@@ -256,7 +256,8 @@
             <label for="name"><b>Food Name</b></label>
             <input id="foodName"  type="text" placeholder="Food" name="name" style= "height: 20px; font-size: 14px" required>
             <label for="amount"><b>Quantity</b></label>
-            <input id="foodAmount" type="number" placeholder="Quantity" name="amount" style= "height: 20px; font-size: 16px; width: 250px;" required>
+            <!-- Switched from number to text type-->
+            <input id="foodAmount" type="text" placeholder="Quantity" name="amount" style= "height: 20px; font-size: 16px; width: 250px;" required>
             <label for="expiration"><b>Expiration Date</b></label>
             <input id="foodExpiration" type="date" placeholder="Expiration Date" name="expiration" style= "height: 20px; width: 250px; font-size: 14px" required>
             <label for="description"><b>Description</b></label>
