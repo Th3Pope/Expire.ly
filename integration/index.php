@@ -81,21 +81,23 @@
               outline: none;
             }
             li {
-              background-color: white; 
+             // background-color: white; 
               text-align: left;
               font-size: 20px;
-              width: 260px;
+              //width: 260px;
             }
-            li:hover {
-              text-decoration: line-through;
-            }
+            
+            //hover decoration removed. to many
+           // #list li:hover {
+            //  text-decoration: line-through;
+            //}
          </style>
          <script>
             function newItem() {
               var item = document.getElementById("input").value;
               var ul = document.getElementById("list");
-              ul.style ="background-color: white";
-              var li = document.createElement("li");
+              ul.style ="background-color: white; width:300px";
+              var li = document.createElement("li");//might be a prob
               li.appendChild(document.createTextNode( item));
               ul.appendChild(li);
               document.getElementById("input").value = "";
