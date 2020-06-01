@@ -295,7 +295,7 @@
          </form>
       </div>
       <!--LEFT OVER BUTTON-->
-      <!--
+      
          <div class="form-popup" id="myForm2" style = "float: bottom;">
            <form class="form-container">
              <h1 style="text-align: center;">Left Overs?</h1>
@@ -306,8 +306,17 @@
              <label for="amount"><b>Portions</b></label>
              <input id="leftAmount" type="number" placeholder="Portions" name="amount" style="height: 20px; font-size: 16px; width:250px;" required>
          
-             <label for="expiration"><b></b>How many days?</label>
-             <input id="leftExpiration" type="number" value ="3" min ="3" name="expiration" style="height: 20px; font-size: 16px; width:250px;" required>
+             <label for="Expiration"><b></b>How many days?</label>
+              <?php
+              $my_date = new DateTime('NOW');
+              $date_plus_3_days = date_add($my_date, new DateInterval('P3D'));
+              echo "<input id='leftExpiration; type='date' value='" . $date_plus_3_days->format("Y-m-d") . "' name='expiration' style='height: 20px; width: 250px; font-size: 14px' required>";
+             ?>
+            <?php
+             //<input id="leftExpiration" type="number" value ="3" min ="3" name="expiration" style="height: 20px; font-size: 16px; width:250px;" required>
+             ?>
+               
+            
                
          
              <label for="Description"><b>Description</b></label>
@@ -320,7 +329,7 @@
              <input type="button" class="btn cancel" onclick="closeForm2(); clearForm2()" value="Close" style="width:100%; height: 20px; line-height:5%;">
            </form>
          </div>
-         -->
+        
       <div id="popup1" class="overlay">
          <div class="popup">
             <h2>Feature Coming Soon</h2>
