@@ -22,9 +22,8 @@ require_once "config.php";
 $target_path = "uploads/";
 // uploads/ folder MUST be created under the web folder (expirely, www_nick, ...)
 // uploads folder MUST have the right privileges
-// chown daemon:daemon -R uploads/
-// chmod 775 -R uploads/
-
+// sudo chown daemon:daemon -R uploads/
+// sudo chmod 775 -R uploads/
 
 $target_path = $target_path . basename( $_FILES['image']['name']);
 $image = '1'; // this is the default image id of RICE
