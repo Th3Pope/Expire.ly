@@ -296,8 +296,9 @@
       </div>
       <!--LEFT OVER BUTTON-->
       
-         <div class="form-popup" id="myForm2" style = "float: bottom;">
+        <div class="form-popup" id="myForm2" style = "float: bottom;">
            <form class="form-container" action="./insert.php">
+
              <h1 style="text-align: center;">Left Overs?</h1>
          
              <label for="name"><b>Left over name</b></label>
@@ -306,25 +307,22 @@
              <label for="amount"><b>Portions</b></label>
              <input id="leftAmount" type="number" placeholder="Portions" name="amount" style="height: 20px; font-size: 16px; width:250px;" required>
          
-             <label for="Expiration"><b></b>How many days?</label>
-              <?php
+
+             <label for="expiration"><b></b>Expiration</label>
+             <?php
               $my_date = new DateTime('NOW');
               $date_plus_3_days = date_add($my_date, new DateInterval('P3D'));
               echo "<input id='leftExpiration; type='date' value='" . $date_plus_3_days->format("Y-m-d") . "' name='expiration' style='height: 20px; width: 250px; font-size: 14px' required>";
              ?>
-            <?php
+             <?php
              //<input id="leftExpiration" type="number" value ="3" min ="3" name="expiration" style="height: 20px; font-size: 16px; width:250px;" required>
              ?>
-               
-            
-               
          
              <label for="Description"><b>Description</b></label>
-             <input id= "leftDescription" type="text" placeholder="Description of left over" name="name" style="height: 20px; font-size: 16px; width:250px;" required>
-             
-               
-               
-            <button type="submit" class="btn" onclick="removeFns(); clearForm2();" style="width:100%; height: 20px; line-height:5%;"> Add </button>
+             <input id= "leftDescription" type="text"  placeholder="Description of left over" name="description" style="height: 20px; font-size: 16px; width:250px;" required>
+                
+              
+             <button type="submit" class="btn" onclick="removeFns(); clearForm2();" style="width:100%; height: 20px; line-height:5%;"> Add </button>
             <button type="submit" class="btn cancel" onclick="closeForm2(); clearForm2();" style="width:100%; height: 20px; line-height:5%;"> Close </button>
            </form>
          </div>
