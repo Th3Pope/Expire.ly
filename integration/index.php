@@ -297,7 +297,7 @@
       <!--LEFT OVER BUTTON-->
       
          <div class="form-popup" id="myForm2" style = "float: bottom;">
-           <form class="form-container">
+           <form class="form-container" action="./insert.php">
              <h1 style="text-align: center;">Left Overs?</h1>
          
              <label for="name"><b>Left over name</b></label>
