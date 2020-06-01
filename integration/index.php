@@ -324,9 +324,8 @@
              
                
                
-             <input type="button" class="btn" onclick="addValues();" value="Add" style="width:100%; height: 20px; line-height:5%;">
-          
-             <input type="button" class="btn cancel" onclick="closeForm2(); clearForm2()" value="Close" style="width:100%; height: 20px; line-height:5%;">
+            <button type="submit" class="btn" onclick="removeFns(); clearForm2();" style="width:100%; height: 20px; line-height:5%;"> Add </button>
+            <button type="submit" class="btn cancel" onclick="closeForm2(); clearForm2();" style="width:100%; height: 20px; line-height:5%;"> Close </button>
            </form>
          </div>
         
