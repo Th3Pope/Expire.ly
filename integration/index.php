@@ -223,8 +223,6 @@
                                            echo "<td>" . $row["expires"] ."</td>";
                                            echo "<td>" . $row["amount"] . "</td>";
                                            echo "<td>" . $row["description"] . "</td>";
-                                 
-                                           //echo "<td align='center'><img src='https://www.lundberg.com/wp-content/uploads/2014/06/ShortGrainBrown-600x600.png' height='70' width='70'></td>";
                                            echo "<td align='center'><img src='" . $row["url"] . "' height='70' width='70'></td>";
 
                     if ($idays < 3) {
@@ -252,8 +250,7 @@
          </div>
       </div>
       <div class="form-popup" id="myForm" style = "float: bottom;">
-         <form class="form-container" action="./insert.php">
-            <!--method="post">-->
+         <form class="form-container" method="post" action="./insert.php" enctype="multipart/form-data">
             <h1 style="text-align: center;">Add Your Food</h1>
             <label for="name"><b>Food Name</b></label>
             <input id="foodName"  type="text" placeholder="Food" name="name" style= "height: 20px; font-size: 14px" required>
@@ -291,7 +288,7 @@
                </div>
             </div>
             <label for="image"><b>Image</b></label>
-            <input type="file" id="foodImage" accept="image/*" onchange="readURL(this)" name="image"style= "height: 40px; font-size: 12px">
+            <input type="file" id="foodImage" accept="image/*" onchange="readURL(this)" name="image" style= "height: 40px; font-size: 12px">
             <img src= "assets/img/image.jpg" height="70" width="70" id="blah"/>
             <button type="submit" class="btn" onclick="removeFns(); clearForm();" style="width:100%; height: 20px; line-height:5%;"> Add </button>
             <button type="submit" class="btn cancel" onclick="closeForm(); clearForm();" style="width:100%; height: 20px; line-height:5%;"> Close </button>
