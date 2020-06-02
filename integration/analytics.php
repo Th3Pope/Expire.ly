@@ -64,39 +64,76 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </div>
     </nav>
     <div class="col"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<div class="container">
-    <canvas id="myChart" width="400" height="300"></canvas>
+  <div class="chart-flex-container">
+    <div width="33%">
+      <h3 style="text-align: center;">Welcome to your analytics page!</h3>
+      <p style="text-align: center;">Here we give you a visual break down of how your foods are represented in charts.
+      We recommened always keep an eye on the quality of the food items in your inventory.
+    The fewer items in the yellow and red zones means the more prepared you are!</p>
+    </div>
+    <div width="33%">
+      <canvas id="Chart1" width="300" height="300"></canvas>
+    </div>
+    <div width="33%">
+      <canvas id="Chart2" width="300" height="300"></canvas>
+    </div>
   </div>
+  <div>
+    <img src="assets/img/foodBanner.jpg" alt="foodBanner" width="100%" height="400">
+  </div>
+
   <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-    /*
-    * type indicates the type of chart we will be using
-    * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
-    */
-    type: 'doughnut',
+  var ctx = document.getElementById('Chart1').getContext('2d');
+  var chart = new Chart(ctx, {
+  /*
+  * type indicates the type of chart we will be using
+  * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+  */
+  type: 'bar',
 
-    // The data for our dataset
-    data: {
-        labels: ["Good", "Use", "Bad"],
-        datasets: [{
-            label: "Food",
-            backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
-            borderColor: 'rgb(0, 0, 0)',
-            data: [13, 7, 5],
-        }]
-    },
+  // The data for our dataset
+  data: {
+      labels: ["Perfect", "Good", "Use", "Bad"],
+      datasets: [{
+          label: ["Perfect", "Good", "Use", "Bad"],
+          backgroundColor: ['rgb(6, 92, 39)', 'rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+          borderColor: 'rgb(0, 0, 0)',
+          data: [5, 8, 4, 2],
+      }]
+  },
 
-    // Configuration options go here
-    options: {
-      title: {
-        display: true,
-        text: 'Food Analytics',
-        fontSize: 28,
-        fontColor: "#AB0032" //CWU Color
-      }
-    }
-});
+  // Configuration options go here
+  options: {
+
+  }
+  });
+  /*
+  * Separating JavaScript for different charts
+  */
+  var cty = document.getElementById('Chart2').getContext('2d');
+  var chart = new Chart(cty, {
+  /*
+  * type indicates the type of chart we will be using
+  * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
+  */
+  type: 'polarArea',
+
+  // The data for our dataset
+  data: {
+    labels: ["Perfect", "Good", "Use", "Bad"],
+    datasets: [{
+        label: ["Perfect", "Good", "Use", "Bad"],
+        backgroundColor: ['rgb(6, 92, 39)', 'rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+        borderColor: 'rgb(0, 0, 0)',
+        data: [5, 8, 4, 2],
+    }]
+  },
+
+  // Configuration options go here
+  options: {
+
+  }
+  });
   </script></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -104,5 +141,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="assets/js/myChart.js"></script>
     <script src="assets/js/Profile-Edit-Form.js"></script>
 </body>
+
+
 
 </html>
