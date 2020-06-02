@@ -25,29 +25,35 @@ $target_path = "uploads/";
 // sudo chown daemon:daemon -R uploads/
 // sudo chmod 775 -R uploads/
 
-$target_path = $target_path . basename( $_FILES['image']['name']);
+$target_file = $target_path . basename( $_FILES['image']['name']);
+$source_file = $_FILES['image']['tmp_name'];
 $image = '1'; // this is the default image id of RICE
 
-if(move_uploaded_file($_FILES['image']['tmp_name'], $target_path))
-{
-	$sqlImg = "INSERT INTO images(url) VALUES ('$target_path')";
-	if (mysqli_query($link, $sqlImg) == TRUE) 
+if (empty($source_file)) {
+	$image = '1'; // this is the default image id of RICE
+} else {
+	if(move_uploaded_file($source_file, $target_file))
 	{
-		$image = $link->insert_id; // this is the ID of the image we just added
-		//echo "image: " . $image;
-		//die;
+		$sqlImg = "INSERT INTO images(url) VALUES ('$target_file')";
+		if (mysqli_query($link, $sqlImg) == TRUE) 
+		{
+			$image = $link->insert_id; // this is the ID of the image we just added
+			//echo "image: " . $image;
+			//die;
+		} else 
+		{
+			echo "Food image database error: " . $sqlImg . "<br>" . $link->error;
+			die;
+		}
+
 	} else 
 	{
-		echo "Food image database error: " . $sqlImg . "<br>" . $link->error;
+		echo "Food image upload failed. I'm afraid something has gone terribly wrong!";
 		die;
 	}
-
-} else 
-{
-	echo "Food image upload failed. I'm afraid something has gone terribly wrong!";
-	die;
 }
 
+	
 // Escape user inputs for security
 $name = mysqli_real_escape_string($link, $_REQUEST['name']);
 $amount = mysqli_real_escape_string($link, $_REQUEST['amount']);
