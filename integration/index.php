@@ -205,19 +205,19 @@
                     $expires = new DateTime($row["expires"], new DateTimeZone('America/Los_Angeles'));
                     $idays = 0;
                     if ($expires < $now) {
-                      $idays = -(int)date_diff($now, $expires)->format("%d");
+                      $idays = -(int)date_diff($now, $expires)->format("%a");
+                      //echo "<br>idays = " . $idays . "<br>";
                     } else {
-                      $idays = (int)date_diff($now, $expires)->format("%d");
+                      $idays = (int)date_diff($now, $expires)->format("%a");
+                      //echo "<br>idays = " . $idays . "<br>";
                     }
 
                                        echo "<tr>";
-                                         //echo "1.7 THIS IS = " . $row["id"];
                                  
                                            echo "<td align='center'>";
                                             echo "<a class='btn btn-danger'  
                                                    href='delete.php?food_id=" . $row["id"] . "'>
                                                    <em class='fa fa-trash'></em></a>";
-                                              // echo "<a class='btn btn-danger' onclick='deleteRow()'><em class='fa fa-trash' id='trash'></em></a>"; 
                                            echo "</td>";
                                            echo "<td>" . $row["name"] . "</td>";
                                            echo "<td>" . $row["expires"] ."</td>";
