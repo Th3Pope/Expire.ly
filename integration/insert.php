@@ -59,13 +59,14 @@ $name = mysqli_real_escape_string($link, $_REQUEST['name']);
 $amount = mysqli_real_escape_string($link, $_REQUEST['amount']);
 $expires = mysqli_real_escape_string($link, $_REQUEST['expiration']);
 $description = mysqli_real_escape_string($link, $_REQUEST['description']);
+$class = mysqli_real_escape_string($link, $_REQUEST['class']);
 
 //echo "expires = " . $expires . "<br>";
 //echo date("YW", strtotime($expires)) . "<br>";
 //$expires = date("YW", strtotime(mysqli_real_escape_string($link, $_REQUEST['expiration'])));
  
 // Attempt insert query execution
-$sqlFood = "INSERT INTO food (name, amount, class, expires, description, user_id, image_id) VALUES ('$name', '$amount', 'food', '$expires', '$description', '" . 
+$sqlFood = "INSERT INTO food (name, amount, class, expires, description, user_id, image_id) VALUES ('$name', '$amount', '$class', '$expires', '$description', '" . 
         mysqli_real_escape_string($link, $_SESSION['id']) . "', '$image')" or die(mysqli_error());
 
 if (mysqli_query($link, $sqlFood)) {

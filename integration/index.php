@@ -251,6 +251,8 @@
       </div>
       <div class="form-popup" id="myForm" style = "float: bottom;">
          <form class="form-container" method="post" action="./insert.php" enctype="multipart/form-data">
+           	 <input type="hidden" name="class" value="food">
+
             <h1 style="text-align: center;">Add Your Food</h1>
             <label for="name"><b>Food Name</b></label>
             <input id="foodName"  type="text" placeholder="Food" name="name" style= "height: 20px; font-size: 14px" required>
@@ -297,7 +299,8 @@
       <!--LEFT OVER BUTTON-->
       
         <div class="form-popup" id="myForm2" style = "float: bottom;">
-           <form class="form-container" action="./insert.php">
+           <form class="form-container" method="post" action="./insert.php" enctype="multipart/form-data">
+           	 <input type="hidden" name="class" value="leftover">
 
              <h1 style="text-align: center;">Left Overs?</h1>
          
