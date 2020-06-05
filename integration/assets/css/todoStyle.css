@@ -1,0 +1,78 @@
+
+/* Tasks TODO */
+ #headingID{
+text-align: center;
+	color: black;
+}
+
+#taskToDo{
+background: white;
+width: 300px;
+padding-top: 20px;
+padding-bottom: 30px;
+margin-bottom: 30px;
+
+
+}
+
+ #buttonArea {
+    width: 75%;
+    margin: 30px auto;
+}
+
+/*You must fill in task error*/
+form p {
+	color: red;
+	margin: 0px;
+}
+.task_input {
+	width: 170px;
+	height: 30px; 
+    border: 2px solid #E9E9E9;
+}
+.add_btn {
+    height: 30px;
+	background-color: green;
+	color: 	white;
+	border-radius: 5px; 
+}
+
+   #tblBody{
+    width: 75%;
+     margin: 30px auto;
+ }
+
+#tableRow {
+	border-bottom: 1px solid #cbcbcb;
+}
+
+th {
+	font-size: 15px;
+    color: black;
+    background: white;
+ }
+
+th, td{
+	border: none;
+    height: 30px;
+    padding: 2px;
+    text-align: center;
+}
+
+tr:hover {
+	background: #E9E9E9;
+}
+
+.delete{
+	text-align: center;
+}
+.delete a{
+	color: white;
+	background: #a52a2a;
+	padding: 1px 6px;
+	border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+}
+
+

@@ -126,9 +126,9 @@
             </body>
          </html>
          <div class="row"></div>
-         <div style="background-color:White; width: 300px; text-align:center;">
-            <h5 >Recipe Search</h5>
-            <script async src="https://cse.google.com/cse.js?cx=0000096038462138319625:3fpaisqpfsk"></script>
+         <div style="text-align:center; width: 300px; background-color:White;">
+            <h4 >Recipe Search</h4>
+            <!--script async src="https://cse.google.com/cse.js?cx=0000096038462138319625:3fpaisqpfsk"></script-->
             <div class="gcse-search"></div>
          </div>
          <div style = "padding-bottom: 30px;">
@@ -148,9 +148,9 @@
                            </div>
                            <div class="col col-xs-6 text-right"
                               style="padding-left: 50px;">
-                              <button type="button" class="btn btn-sm btn-primary btn-create" style= "background-color:green; width: 100px;" onclick="openForm(); closeForm2();">Create New</button>
+                              <button type="button" class="btn btn-sm btn-primary btn-create" style= "background-color:green; border: none; width: 100px;" onclick="openForm(); closeForm2();">Create New</button>
                               <!--LEFTOVER BUTTON-->
-                              <button type="open-button" class="btn btn-sm btn-primary btn-create" style= "background-color:light-blue; width: 100px;" onclick="openForm2(); closeForm();">Left Overs?</button>
+                              <button type="open-button" class="btn btn-sm btn-primary btn-create" style= "background-color:light-blue; border: none; width: 100px;" onclick="openForm2(); closeForm();">Left Overs?</button>
                            </div>
                         </div>
                      </div>
@@ -318,7 +318,7 @@
               echo "<input id='leftExpiration; type='date' value='" . $date_plus_3_days->format("Y-m-d") . "' name='expiration' style='height: 20px; width: 250px; font-size: 14px' required>";
              ?>
              <?php
-             //<input id="leftExpiration" type="number" value ="3" min ="3" name="expiration" style="height: 20px; font-size: 16px; width:250px;" required>
+             
              ?>
          
              <label for="Description"><b>Description</b></label>
