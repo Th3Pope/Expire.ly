@@ -19,7 +19,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>BlueButton</title>
+    <title>Expire.ly</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -62,27 +62,79 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </ul>
         </div>
         </div>
-    </nav>
-    <div class="col"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-  <div class="chart-flex-container">
-    <div width="33%">
-      <h3 style="text-align: center;">Welcome to your analytics page!</h3>
-      <p style="text-align: center;">Here we give you a visual break down of how your foods are represented in charts.
+    </nav>    <div>
+        <div class="container"><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+            <!-- top row-->
+            <div class="row">
+                <div class="col-md-12">
+                <h3 style="text-align: center; padding: 15px;">Welcome to your analytics page!</h3>
+      
+                <body style="text-align: center; margin-bottom: 30px;">Here we give you a visual break down of how your foods are represented in charts.
       We recommened always keep an eye on the quality of the food items in your inventory.
-    The fewer items in the yellow and red zones means the more prepared you are!</p>
+    The fewer items in the yellow and red zones means the more prepared you are!</body>
+                </div>
+            </div>
+            <!--Bottom Row-->
+            <div class="row">
+                <!--Left Block-->
+                <div class="col-md-6">
+                <canvas id="Chart1" width="300" height="300"></canvas>
+                </div>
+                <!--Right block-->
+                <div class="col-md-6">
+                <canvas id="Chart2" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-    <div width="33%">
-      <canvas id="Chart1" width="300" height="300"></canvas>
-    </div>
-    <div width="33%">
-      <canvas id="Chart2" width="300" height="300"></canvas>
-    </div>
-  </div>
-  <div>
-    <img src="assets/img/foodBanner.jpg" alt="foodBanner" width="100%" height="400">
-  </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Create-Form.js"></script>
+</body>
+<?php
+                                $bad = 0;
+                                $use = 0;
+                                $good = 0;
+                                
+                                
+                                $seshId = $_SESSION["id"];
+                                 
+                                 $sqlFetch = "SELECT expires, user_id FROM food WHERE user_id = ' $seshId ' " ;
+                                 
+                                $result = $link->query($sqlFetch);
+                                if ($result->num_rows > 0) 
+                                {
+                  while($row = $result->fetch_assoc()) 
+                                    {
+                    $now = new DateTime('NOW', new DateTimeZone('America/Los_Angeles')); // should use user time zone
+                    $expires = new DateTime($row["expires"], new DateTimeZone('America/Los_Angeles'));
+                    $idays = 0;
+                    if ($expires < $now) {
+                      $idays = -(int)date_diff($now, $expires)->format("%a");
+                      
+                    } else {
+                      $idays = (int)date_diff($now, $expires)->format("%a");
+                      
+                    }
+
+                                        if ($idays < 3) {
+                                          ++$bad;
+                                        } elseif ($idays >= 3 && $idays <= 14) {
+                                          ++$use;
+                                        } else {
+                                          ++$good;
+                                        }
+                                   }
+                                 }
+                                
+                                 ?>
 
   <script>
+  //var dataStuff = [0, 0, 0];
+  var bad = <?php echo json_encode($bad); ?>;
+  var use = <?php echo json_encode($use); ?>;
+  var good = <?php echo json_encode($good); ?>;
+
   var ctx = document.getElementById('Chart1').getContext('2d');
   var chart = new Chart(ctx, {
   /*
@@ -93,12 +145,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   // The data for our dataset
   data: {
-      labels: ["Perfect", "Good", "Use", "Bad"],
+      labels: ["Good", "Use", "Bad"],
       datasets: [{
-          label: ["Perfect", "Good", "Use", "Bad"],
-          backgroundColor: ['rgb(6, 92, 39)', 'rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+          label: ["Good", "Use", "Bad"],
+          backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
           borderColor: 'rgb(0, 0, 0)',
-          data: [5, 8, 4, 2],
+          data: [good, use, bad],
       }]
   },
 
@@ -106,7 +158,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   options: {
 
   }
-  });
+});
   /*
   * Separating JavaScript for different charts
   */
@@ -116,16 +168,16 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   * type indicates the type of chart we will be using
   * line, bar, radar, doughnut and pie, polar area, bubble, and scatter
   */
-  type: 'polarArea',
+  type: 'doughnut',
 
   // The data for our dataset
   data: {
-    labels: ["Perfect", "Good", "Use", "Bad"],
+    labels: [ "Good", "Use", "Bad"],
     datasets: [{
-        label: ["Perfect", "Good", "Use", "Bad"],
-        backgroundColor: ['rgb(6, 92, 39)', 'rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
+        label: [ "Good", "Use", "Bad"],
+        backgroundColor: ['rgb(35, 136, 35)', 'rgb(255, 191, 0)', 'rgb(210, 34, 46)'],
         borderColor: 'rgb(0, 0, 0)',
-        data: [5, 8, 4, 2],
+        data: [ good, use, bad],
     }]
   },
 
@@ -134,14 +186,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   }
   });
-  </script></div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/Create-Form.js"></script>
-    <script src="assets/js/myChart.js"></script>
-    <script src="assets/js/Profile-Edit-Form.js"></script>
-</body>
-
-
+  </script>
 
 </html>
