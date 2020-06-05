@@ -65,66 +65,84 @@
       <div class="container" style="display: inline-table;">
       <div class="row" style="display: flex; flex-wrap: wrap; float: center;">
       <div class="col-md-6 col-lg-9 col-xl-3" style="margin-right: 30px; padding-top: 18px;">
-         <style>
-            html {
-              font-family: Helevetica, sans-serif;
-            }
-            input {
-              // position: absolute; 
-              width: 300px;
-              height: 60px;
-              font-size: 30px;
-              border: 2px;
-            }
-            input:focus {
-              border: 1px;
-              outline: none;
-            }
-            li {
-             // background-color: white; 
-              text-align: left;
-              font-size: 20px;
-              //width: 260px;
-            }
-            
-            //hover decoration removed. to many
-           // #list li:hover {
-            //  text-decoration: line-through;
-            //}
-         </style>
-         <script>
-            function newItem() {
-              var item = document.getElementById("input").value;
-              var ul = document.getElementById("list");
-              ul.style ="background-color: white; width:300px";
-              var li = document.createElement("li");//might be a prob
-              li.appendChild(document.createTextNode( item));
-              ul.appendChild(li);
-              document.getElementById("input").value = "";
-              li.onclick = removeItem;
-            }
-            
-            document.body.onkeyup = function(e) {
-              if (e.keyCode == 13 && document.getElementById("input").value != "") {
-                newItem();
-              }
-            };
-            
-            function removeItem(e) {
-              e.target.parentElement.removeChild(e.target);
-            }
-         </script>
-         <html>
-            <title>To-do List</title>
-            <head>
-               <meta charset="utf-8" />
-               <meta name="viewport" />
-            </head>
-            <body>
-               <input id="input" placeholder="Things To Do?" />
-               <ul id="list"></ul>
-            </body>
-         </html>
+              
+         <?php 
+	
+   $userid = $_SESSION["id"];
+	// insert a quote if submit button is clicked
+	if (isset($_POST['submit'])) {
+
+		if (empty($_POST['task'])) {
+			$errors = "You must fill in the task";
+		}else{
+			$task = $_POST['task'];
+			$query = "INSERT INTO todo (note, user_id) VALUES ('$task', '$userid')";//needs diff user_id
+			mysqli_query($link, $query);
+			header('location: index.php');
+		}
+	}	
+
+	// delete task
+	if (isset($_GET['del_task'])) {
+		$id = $_GET['del_task'];
+
+		mysqli_query($link, "DELETE FROM todo WHERE id=".$id);
+		header('location: index.php');
+	}
+
+	// select all tasks if page is visited or refreshed
+	$tasks = mysqli_query($link, "SELECT * FROM todo WHERE user_id = '$userid'");
+
+?>
+
+<div id="taskToDo">
+<head>
+	<title>Tasks Todo</title>
+	<link rel="stylesheet" type="text/css" href="todoStyle.css">
+</head>
+
+<body id="bodyID">
+
+	<div id="headingID" class="heading">
+		<h4>My Tasks</h4>
+	</div>
+
+
+	<form id= "buttonArea" method="post" action="index.php" class="input_form">
+		<?php if (isset($errors)) { ?>
+			<p><?php echo $errors; ?></p>
+		<?php } ?>
+		<input type="text" name="task" class="task_input"placeholder="Add a task here">
+		<button type="submit" name="submit" id="add_btn" class="add_btn">Add</button>
+	</form>
+
+
+	<table id= "tblBody">
+		<thead style="border-bottom: 3px solid black; padding-bottom: 6px;">
+			<tr>
+				<th>#</th>
+				<th>Tasks</th>
+				<th>Done</th>
+			</tr>
+		</thead>
+
+		<tbody ><!--id= "tblBody"-->
+			<?php $i = 1; while ($row = mysqli_fetch_array($tasks)) { ?>
+				<tr id="tableRow">
+					<td> <?php echo $i; ?> </td>
+					<td class="task" > <?php echo $row['note']; ?> </td>
+					<td class="delete"> 
+						<a href="index.php?del_task=<?php echo $row['id'] ?>">X</a> 
+					</td>
+				</tr>
+			<?php $i++; } ?>	
+		</tbody>
+	</table>
+
+</body>
+         </div>
+
+         <!--/htmlBELOW SHOULD COME BACK ITS THE RECIPE SEARCH-->
          <div class="row"></div>
          <div style="text-align:center; width: 300px; background-color:White;">
             <h4 >Recipe Search</h4>
