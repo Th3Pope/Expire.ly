@@ -98,7 +98,7 @@
 <div id="taskToDo">
 <head>
 	<title>Tasks Todo</title>
-	<link rel="stylesheet" type="text/css" href="todoStyle.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/todoStyle.css">
 </head>
 
 <body id="bodyID">
@@ -177,7 +177,28 @@
                         <table class="table table-striped table-bordered table-list" id="myTable" >
                            <thead>
                               <tr>
-                                 <th>Delete</th>
+                                 <th>
+                                    <a class="btn btn-success" div class="dropdown" onclick="myFunction()"><em class="fa fa-filter"></em></a>
+                                    <div id="myDropdown" class="dropdown-content">
+                                       <input type="text" placeholder="filters" id="myInput" onkeyup="filterFunction()">
+                                       <a href="#breakFast">Breakfast</a>
+                                       <a href="#canFood">Can Food</a>
+                                       <a href="#condiments">Condiments</a>
+                                       <a href="#dairy">Dairy</a>
+                                       <a href="#dinner">Dinner</a>
+                                       <a href="#expiringSoon">Expiring soon</a>
+                                       <a href="#fish">Fish</a>
+                                       <a href="#freezer">Freezer</a>
+                                       <a href="#fridge">Fridge</a>
+                                       <a href="#fruit">Fruit</a>
+                                       <a href="#grarage">Grarage</a>
+                                       <a href="#lunch">Lunch</a>
+                                       <a href="#meat">Meat</a>
+                                       <a href="#pantry">Pantry</a>
+                                       <a href="#spice">Spice</a>
+                                       <a href="#vegetables">Vegetables</a>
+                                    </div>
+                                 </th>
                                  <th>Name</th>
                                  <th>Expiration</th>
                                  <th>Amount</th>
@@ -260,6 +281,32 @@
             <input id="foodExpiration" type="date" placeholder="Expiration Date" name="expiration" style= "height: 20px; width: 250px; font-size: 14px" required>
             <label for="description"><b>Description</b></label>
             <input id="foodDescription" type="text" placeholder="Enter Description" name="description" style= "height: 20px; font-size: 14px">
+            <div class="multiselect">
+               <div class="selectBox" onclick="showCheckboxes()">
+                  <select>
+                     <option>Please select a filter.</option>
+                  </select>
+                  <div class="overSelect"></div>
+               </div>
+               <div id="checkboxes">
+                  <label for="breakFast"><input type="checkbox" class="smaller" id="breakFast"/>BreakFast</label>
+                  <label for="canFood"><input type="checkbox" class="smaller" id="canFood"/>Can Food</label>
+                  <label for="condiments"><input type="checkbox" class="smaller" id="condiments"/>Condiments</label>
+                  <label for="dairy"><input type="checkbox" class="smaller" id="dairy"/>Dairy</label>
+                  <label for="dinner"><input type="checkbox" class="smaller" id="dinner"/>Dinner</label>
+                  <label for="expiringSoon"><input type="checkbox" class="smaller" id="expiringSoon"/>Expiring Soon</label>
+                  <label for="fish"><input type="checkbox" class="smaller" id="fish"/>Fish</label>
+                  <label for="freezer"><input type="checkbox" class="smaller" id="freezer"/>Freezer</label>
+                  <label for="fridge"><input type="checkbox" class="smaller" id="fridge"/>Fridge</label>
+                  <label for="fruit"><input type="checkbox" class="smaller" id="fruit"/>Fruit</label>
+                  <label for="grarage"><input type="checkbox" class="smaller" id="grarage"/>Grarage</label>
+                  <label for="lunch"><input type="checkbox" class="smaller" id="lunch"/>Lunch</label>
+                  <label for="meat"><input type="checkbox" class="smaller" id="meat"/>Meat</label>
+                  <label for="pantry"><input type="checkbox" class="smaller" id="pantry"/>Pantry</label>
+                  <label for="spicespice"><input type="checkbox" class="smaller" id="spice"/>Spice</label>
+                  <label for="vegetables"><input type="checkbox" class="smaller" id="vegetables"/>Vegetables</label>
+               </div>
+            </div>
             <label for="image"><b>Image</b></label>
             <input type="file" id="foodImage" accept="image/*" onchange="readURL(this)" name="image" style= "height: 40px; font-size: 12px">
             <img src= "assets/img/image.jpg" height="70" width="70" id="blah"/>
